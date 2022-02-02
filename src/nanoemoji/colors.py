@@ -204,6 +204,10 @@ class Color(collections.namedtuple("Color", "red green blue alpha")):
                 raise ValueError(f"expected 3, 4, 6, or 8 hex digits, found {s!r}")
         elif s in _CSS_COLORS:
             red, green, blue = _CSS_COLORS[s]
+
+        elif s == 'transparent':
+            red, green, blue, alpha = (0x00, 0x00, 0x00, 0.0)
+            
         elif s.startswith("rgb(") and s.endswith(")"):
             ss = s[4:-1]
             # accept either commas or space, not both
